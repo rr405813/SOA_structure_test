@@ -111,7 +111,6 @@ TYPOGRAPHY
 .next {
   font-size: 1.5em;
   font-weight: 400;
-  margin: 16px 0; 
  background-color: transparent;
 -webkit-text-decoration-skip: objects;
 color: white;
@@ -120,6 +119,7 @@ position: absolute;
 right: 0;
 margin-right: 20px;
 min-height: 500px;
+        top: 50%;
 
 }
 .breadcrumb_panel .breadcrumb_link {
@@ -134,13 +134,16 @@ min-height: 500px;
 /* ==========================================================================
    MENU 
 ========================================================================== */
-.first_section_nav {
+.first_section_nav p {
     font-family: 'Raleway', sans-serif;
     font-weight: 900;
     text-transform: uppercase;
-    padding-top: 30px;
     font-size: 30px;
-    text-align: center;
+    text-align: left;
+    font-style: italic;
+    margin: 0;
+    background-color: #999;
+    padding-left: 25px;
 }
 
 
@@ -148,6 +151,21 @@ min-height: 500px;
     width: 33%;
     display: inline-block;
     height: 100vh;
+    overflow:hidden;
+    position: relative;
+}
+
+.menu_container li {
+    height: 8px;
+}
+
+
+.story_video {
+    width: 100%;
+    display: inline-block;
+    height: 100%;
+    z-index: -100;
+    object-fit: cover;
 }
 
 
@@ -300,6 +318,13 @@ body {
 .full-nav-a, .full-nav-a:visited, .full-nav-a:active {
 	text-decoration: none;
 	color: #ffffff;
+    position: absolute;
+    top: 50%;
+    left: 33%;
+    text-align: center;
+    font-family: "Raleway";
+    font-weight:700;
+    text-transform: uppercase;
 }
 
 
