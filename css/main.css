@@ -6,24 +6,19 @@
  * Kroc Camen, and the H5BP dev community and team.
  */
 
-/* ==========================================================================
-   Base styles: opinionated defaults
+/* 
+
+Soul of Athens Main CSS
+Contributors: Rachel Rogala
+
+==========================================================================
+   GENERAL STYLES
    ========================================================================== */
 @import url('https://fonts.googleapis.com/css?family=Shrikhand');
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 
 body {
     font-family: 'Shrikhand', cursive !important; 
-}
-
-video.full_video {
-    height: 100vh;
-  width: 100%;
-      object-fit: cover;
-    position: absolute;
-    /* Change position to absolute if you don't want it to take up the whole page */
-    left: 0px;
-    top: 0px;
-    z-index: -100;
 }
 
 
@@ -99,10 +94,6 @@ textarea {
     resize: vertical;
 }
 
-/* ==========================================================================
-   Browser Upgrade Prompt
-   ========================================================================== */
-
 .browserupgrade {
     margin: 0.2em 0;
     background: #ccc;
@@ -110,48 +101,12 @@ textarea {
     padding: 0.2em 0;
 }
 
-/* ==========================================================================
-   Author's custom styles
+/* 
+==========================================================================
+TYPOGRAPHY
    ========================================================================== */
-.slide_title {
-      font-size: 2em;
-    font-weight: 300;
-    margin: 0 auto;
-    width: 500px;
-    line-height: 50px;
-    text-align: center;
-    top: 300px;
-    position: relative;
-}
 
 
-video.full_video {
-    height: 100vh;
-  width: 100%;
-      object-fit: cover;
-    position: absolute;
-    /* Change position to absolute if you don't want it to take up the whole page */
-    left: 0px;
-    top: 0px;
-    z-index: -100;
-}
-
-body {
-    font-family: 'Shrikhand', cursive;
-}
-
-a {
- background-color: transparent;
--webkit-text-decoration-skip: objects;
-color: white;
-text-decoration: none;
-top: 50%;
-position: absolute;
-right: 0;
-margin-right: 20px;
-
-
-}
 
 .next {
   font-size: 1.5em;
@@ -161,10 +116,10 @@ margin-right: 20px;
 -webkit-text-decoration-skip: objects;
 color: white;
 text-decoration: none;
-top: 50%;
 position: absolute;
 right: 0;
 margin-right: 20px;
+min-height: 500px;
 
 }
 .breadcrumb_panel .breadcrumb_link {
@@ -176,6 +131,256 @@ margin-right: 20px;
 .breadcrumb_panel .slide_title {
   margin-top: 0; }
 
+/* ==========================================================================
+   MENU 
+========================================================================== */
+.first_section_nav {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding-top: 30px;
+    font-size: 30px;
+    text-align: center;
+}
+
+
+.menu_container {
+    width: 33%;
+    display: inline-block;
+    height: 100vh;
+}
+
+
+/* full-menu skeleton following BEM and mobile-first guidelines using a checkbox hack */
+
+body {
+	margin: 0px;
+	background-color: #ffffff;
+	font-family: 'Helvetica', 'Arial', sans-serif;
+	font-size: 1rem;
+}
+
+
+/* don't display the checkbox */
+.full-chk {
+	display: none;
+}
+
+
+/* container object for the hamburger */
+.full-cntr {
+    position: fixed;
+    width: 38px;
+    height: 28px;
+    bottom: 0;
+    right: 0;
+    background-color: transparent;
+    z-index: 300;
+    cursor: pointer;
+}
+
+.full-chk:checked + .full-cntr {
+	background-color: transparent;
+	border-color: #ffffff;
+}
+
+	@media (min-width: 550px) {
+		.full-cntr {
+			top: 8px;
+		}
+	}
+
+
+/* spans are the cntr that turn from a hamburger to an x */
+.full-span {
+	position: absolute;
+	left: 4px;
+	width: 30px;
+	height: 3px;
+	background-color: #fff;
+	z-index: 300;
+	transform: rotate(0deg);
+	transform-origin: left center;
+
+	transition: background-color 0.3s ease-out 0s,
+		opacity 0.3s ease-out 0.1s,
+		transform 0.2s ease-out 0s,
+		width 0.2s ease-out 0s,
+		left 0.2s ease-out 0s;
+}
+
+.full-chk:checked + .full-cntr > .full-span {
+	background-color: #ffffff;
+}
+
+.full-span:nth-child(1) {
+	top: 4px;
+}
+
+.full-chk:checked + .full-cntr > .full-span:nth-child(1) {
+	transform: rotate(45deg);
+	width: 23px;
+	left: 11px;
+}
+
+.full-span:nth-child(2) {
+	top: 12px;
+}
+
+.full-chk:checked + .full-cntr > .full-span:nth-child(2) {
+	opacity: 0;
+	width: 30px;
+	
+	transition: opacity 0.1s ease-out 0s;
+}
+
+.full-span:nth-child(3) {
+	top: 20px;
+}
+
+.full-chk:checked + .full-cntr > .full-span:nth-child(3) {
+	transform: rotate(-45deg);
+	width: 23px;
+	left: 11px;
+}
+
+
+/* style for a nav element, the full-screen menu  */
+.full-nav {
+	position: fixed;
+	top: 0%;
+	bottom: 0%;
+	left: 0%;
+	right: 0%;
+    background-color: rgba(0, 0, 0, .8);
+	opacity: 0;
+	z-index: -1;
+
+	transition: opacity 0.3s ease-out 0s,
+		z-index 0s ease-out 0.3s;
+}
+
+.full-chk:checked ~ .full-nav {
+	opacity: 1;
+	z-index: 200;
+
+	transition: opacity 0.3s ease-out 0s;
+}
+
+
+/* unordered list inside nav element or .full-nav */
+/* make position relative to help vertically align menu */
+.full-nav-ul {
+	position: relative;
+	height: 100%;
+	margin: 0px auto 0px auto;
+	padding: 0px;
+	list-style-type: none;
+}
+
+
+/* for vertically aligning our menu */
+.full-nav-cntr {
+	position: absolute;
+	top: 48%;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	transform: translate(0%, -50%);
+}
+
+
+/* give the mouse cursor a signal */
+.full-nav-hltd {
+	padding: 5px 10px 5px 10px;
+
+}
+
+/* undecorate links */
+.full-nav-a, .full-nav-a:visited, .full-nav-a:active {
+	text-decoration: none;
+	color: #ffffff;
+}
+
+
+/* link text inside .full-nav-li */
+.full-nav-p {
+	margin: 10px 0px 10px 0px;
+	padding: 5px 0px 5px 0px;
+	font-family: 'Helvetica', 'Arial', sans-serif;
+	font-size: 14px;
+	text-align: center;
+}
+
+	@media (min-width: 700px) and (min-height: 450px) {
+		.full-nav-p {
+			font-size: 26px;
+		}
+	}
+
+
+/* main  area */
+.full-main {
+	width: 100%;
+	margin: 10px 0px 20px 0px;
+	padding: 0px;
+	background-color: #ffffff;
+	z-index: 0;
+}
+
+
+/* adjusted content area */
+.full-content {
+	width: 90%;
+	max-width: 400px;
+	margin: 30px auto 70px auto;
+}
+
+@media (min-width: 600px) {
+	.full-content {
+		width: 80%;
+		max-width: 450px;
+		margin: 50px auto 70px auto;
+	}
+}
+
+
+/* for styling content from shakespeare.mit.edu/midsummer/midsummer.5.1.html */
+h3, b {
+	color: #009fab;
+}
+
+
+.full-content > a,
+.full-content > blockquote > a,
+.full-content > blockquote > p {
+	color: #303030;
+	font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   VIDEO PAGE SLIDER and smoothstate.js ========================================================================== */
+.slide_title {
+      font-size: 2em;
+    font-weight: 300;
+    margin: 0 auto;
+    width: 500px;
+    line-height: 50px;
+    text-align: center;
+    top: 300px;
+    position: relative;
+}
+
+video.full_video {
+    height: 100vh;
+  width: 100%;
+      object-fit: cover;
+    position: absolute;
+    /* Change position to absolute if you don't want it to take up the whole page */
+    left: 0px;
+    top: 0px;
+    z-index: -100;
+}
 
 /*
  * CSS TAKEN FROM https://css-tricks.com/add-page-transitions-css-smoothstate-js/ 
@@ -223,6 +428,21 @@ Copyright (c) 2014 Daniel Eden
 
 }
 
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+}
+
+
 .m-scene {
   /** Basic styles for an animated element */
   .scene_element {
@@ -247,14 +467,6 @@ Copyright (c) 2014 Daniel Eden
     animation-name: fadeInRight;
   }
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -438,27 +650,14 @@ Copyright (c) 2014 Daniel Eden
 
 
 
-
-
-/*!
-Animate.css - http://daneden.me/animate
-Licensed under the MIT license - http://opensource.org/licenses/MIT
-
-Copyright (c) 2014 Daniel Eden
-*/
-/* line 10, /Users/miguelperez/Sites/csstricks/source/stylesheets/keyframes.css.scss */
 .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both; }
-
-/* line 17, /Users/miguelperez/Sites/csstricks/source/stylesheets/keyframes.css.scss */
-.animated.infinite {
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite; }
 
-/* line 22, /Users/miguelperez/Sites/csstricks/source/stylesheets/keyframes.css.scss */
 .animated.hinge {
   -webkit-animation-duration: 2s;
   animation-duration: 2s; }
@@ -523,7 +722,7 @@ Copyright (c) 2014 Daniel Eden
     opacity: 1; }
   25%, 75% {
     opacity: 0; } }
-/* line 115, /Users/miguelperez/Sites/csstricks/source/stylesheets/keyframes.css.scss */
+
 .flash {
   -webkit-animation-name: flash;
   animation-name: flash; }
@@ -636,7 +835,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-transform: translate3d(10px, 0, 0);
     -ms-transform: translate3d(10px, 0, 0);
     transform: translate3d(10px, 0, 0); } }
-/* line 287, /Users/miguelperez/Sites/csstricks/source/stylesheets/keyframes.css.scss */
+
 .shake {
   -webkit-animation-name: shake;
   animation-name: shake; }
@@ -678,7 +877,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-transform: rotate3d(0, 0, 1, 0deg);
     -ms-transform: rotate3d(0, 0, 1, 0deg);
     transform: rotate3d(0, 0, 1, 0deg); } }
-/* line 351, /Users/miguelperez/Sites/csstricks/source/stylesheets/keyframes.css.scss */
+
 .swing {
   -webkit-transform-origin: top center;
   -ms-transform-origin: top center;
@@ -723,12 +922,11 @@ Copyright (c) 2014 Daniel Eden
     -webkit-transform: scale3d(1, 1, 1);
     -ms-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1); } }
-/* line 418, /Users/miguelperez/Sites/csstricks/source/stylesheets/keyframes.css.scss */
+
 .tada {
   -webkit-animation-name: tada;
   animation-name: tada; }
 
-/* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
 @-webkit-keyframes wobble {
   0% {
     -webkit-transform: none;
@@ -780,7 +978,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-transform: none;
     -ms-transform: none;
     transform: none; } }
-/* line 506, /Users/miguelperez/Sites/csstricks/source/stylesheets/keyframes.css.scss */
+
 .wobble {
   -webkit-animation-name: wobble;
   animation-name: wobble; }
@@ -841,7 +1039,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-transform: scale3d(1, 1, 1);
     -ms-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1); } }
-/* line 597, /Users/miguelperez/Sites/csstricks/source/stylesheets/keyframes.css.scss */
+
 .bounceIn {
   -webkit-animation-name: bounceIn;
   animation-name: bounceIn;
@@ -895,7 +1093,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-transform: none;
     -ms-transform: none;
     transform: none; } }
-/* line 677, /Users/miguelperez/Sites/csstricks/source/stylesheets/keyframes.css.scss */
+
 .bounceInDown {
   -webkit-animation-name: bounceInDown;
   animation-name: bounceInDown; }
@@ -947,7 +1145,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-transform: none;
     -ms-transform: none;
     transform: none; } }
-/* line 755, /Users/miguelperez/Sites/csstricks/source/stylesheets/keyframes.css.scss */
+
 .bounceInLeft {
   -webkit-animation-name: bounceInLeft;
   animation-name: bounceInLeft; }
@@ -999,7 +1197,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-transform: none;
     -ms-transform: none;
     transform: none; } }
-/* line 833, /Users/miguelperez/Sites/csstricks/source/stylesheets/keyframes.css.scss */
+
 .bounceInRight {
   -webkit-animation-name: bounceInRight;
   animation-name: bounceInRight; }
@@ -1051,7 +1249,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0); } }
-/* line 911, /Users/miguelperez/Sites/csstricks/source/stylesheets/keyframes.css.scss */
+
 .bounceInUp {
   -webkit-animation-name: bounceInUp;
   animation-name: bounceInUp; }
@@ -1083,7 +1281,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-transform: scale3d(0.3, 0.3, 0.3);
     -ms-transform: scale3d(0.3, 0.3, 0.3);
     transform: scale3d(0.3, 0.3, 0.3); } }
-/* line 957, /Users/miguelperez/Sites/csstricks/source/stylesheets/keyframes.css.scss */
+
 .bounceOut {
   -webkit-animation-name: bounceOut;
   animation-name: bounceOut;
@@ -1117,7 +1315,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-transform: translate3d(0, 2000px, 0);
     -ms-transform: translate3d(0, 2000px, 0);
     transform: translate3d(0, 2000px, 0); } }
-/* line 1005, /Users/miguelperez/Sites/csstricks/source/stylesheets/keyframes.css.scss */
+
 .bounceOutDown {
   -webkit-animation-name: bounceOutDown;
   animation-name: bounceOutDown; }
@@ -1142,7 +1340,7 @@ Copyright (c) 2014 Daniel Eden
     -webkit-transform: translate3d(-2000px, 0, 0);
     -ms-transform: translate3d(-2000px, 0, 0);
     transform: translate3d(-2000px, 0, 0); } }
-/* line 1040, /Users/miguelperez/Sites/csstricks/source/stylesheets/keyframes.css.scss */
+
 .bounceOutLeft {
   -webkit-animation-name: bounceOutLeft;
   animation-name: bounceOutLeft; }
